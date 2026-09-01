@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Reproduzir Vídeo com Enter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        video {
+            max-width: 100%;
+            border: 2px solid #333;
+            border-radius: 8px;
+        }
+        p {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Pressione Enter para reproduzir o vídeo</h1>
+
+    <!-- Vídeo -->
+    <video id="meuVideo" width="640" controls>
+        <source src="about_us__.mp4" type="video/mp4">
+        Seu navegador não suporta vídeos HTML5.
+    </video>
+
+    <p>(Certifique-se de que o vídeo está carregado e pressione Enter)</p>
+
+    <script>
+        // Captura o evento de tecla pressionada
+        document.addEventListener("keydown", function(event) {
+            // Verifica se a tecla pressionada foi Enter
+            if (event.key === "Enter") {
+                const video = document.getElementById("meuVideo");
+
+                // Se o vídeo estiver pausado, reproduz; se estiver tocando, pausa
+                if (video.paused) {
+                    video.play().catch(err => {
+                        console.error("Erro ao tentar reproduzir o vídeo:", err);
+                    });
+                } else {
+                    video.pause();
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
